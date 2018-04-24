@@ -1,6 +1,6 @@
 {
-  "name": "amqplib-flow",
-  "version": "1.1.0",
+  "name": "@preo/amqplib-flow",
+  "version": "2.0.0",
   "description": "amqp.node type declarations for Flow",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,11 @@
   },
   "author": "Vladimir Kurchatkin <vladimir.kurchatkin@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "restricted",
+    "scope": "@preo",
+    "sign-git-tag": true
+  },
   "devDependencies": {
     "flow-bin": "0.69.0"
   },

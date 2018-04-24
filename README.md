@@ -19,7 +19,7 @@ Then add a line to `[libs]` section of yout `.flowconfig`:
 ```
 [libs]
 ...
-node_modules/amqplib-flow/types.js
+node_modules/@preo/amqplib-flow/types.js
 ...
 ```
 
