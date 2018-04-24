@@ -11,5 +11,7 @@
   "devDependencies": {
     "flow-bin": "0.69.0"
   },
-  "dependencies": {}
+  "peerDependencies": {
+    "flow-bin": ">=0.59.0"
+  }
 }
