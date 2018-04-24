@@ -1,3 +1,4 @@
+/* @flow */
 
 declare class events$EventEmitter {
   static listenerCount(emitter: events$EventEmitter, event: string): number;
