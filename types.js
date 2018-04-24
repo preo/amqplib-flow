@@ -5,18 +5,18 @@ declare module 'amqplib' {
   declare export type Args = { [key: string]: string };
   declare export type Headers = { [key: string]: string };
 
-  declare export type QueueOptions = {
-    exclusive?: boolean,
-    durable?: boolean,
-    autoDelete?: boolean,
-    arguments?: Args,
+  declare export type QueueOptions = {|
+    exclusive?: ?boolean,
+    durable?: ?boolean,
+    autoDelete?: ?boolean,
+    arguments?: ?Args,
     /* extenstions */
-    messageTtl?: number,
-    expires?: number,
-    deadLetterExchange?: string,
-    maxLength?: number,
-    maxPriority?: number
-  };
+    messageTtl?: ?number,
+    expires?: ?number,
+    deadLetterExchange?: ?string,
+    maxLength?: ?number,
+    maxPriority?: ?number
+  |};
 
   declare export type QueueOk = {
     queue: string,
@@ -28,10 +28,10 @@ declare module 'amqplib' {
     messageCount: number
   };
 
-  declare export type DeleteQueueOpts = {
-    ifUnused?: boolean,
-    ifEmpty?: boolean
-  };
+  declare export type DeleteQueueOpts = {|
+    ifUnused?: ?boolean,
+    ifEmpty?: ?boolean
+  |};
 
   declare export type ExchangeType =
     | 'fanout'
@@ -40,54 +40,54 @@ declare module 'amqplib' {
     | 'headers'
     ;
 
-  declare export type ExchangeOpts = {
-    durable?: boolean,
-    internal?: boolean,
-    autoDelete?: boolean,
-    alternateExchange?: string,
-    arguments?: Args
-  };
+  declare export type ExchangeOpts = {|
+    durable?: ?boolean,
+    internal?: ?boolean,
+    autoDelete?: ?boolean,
+    alternateExchange?: ?string,
+    arguments?: ?Args
+  |};
 
   declare export type ExchangeOk = {
     exchange: string
   };
 
-  declare export type ExchangeDeleteOpts = {
-    ifUnused?: boolean;
-  };
+  declare export type ExchangeDeleteOpts = {|
+    ifUnused?: ?boolean;
+  |};
 
-  declare export type PublishOpts = {
-    expiration?: number,
-    userId?: string,
-    CC?: string | Array<string>,
-    BCC?: string | Array<string>,
-    priority?: number,
-    persistent?: boolean,
-    deliveryMode?: 1 | 2,
-    mandatory?: boolean,
-    contentType?: string,
-    contentEncoding?: string,
-    headers?: Headers,
-    correlationId?: string,
-    replyTo?: string,
-    messageId?: string,
-    timestamp?: number,
-    type?: string,
-    appId?: string
-  };
+  declare export type PublishOpts = {|
+    expiration?: ?number,
+    userId?: ?string,
+    CC?: ?(string | Array<string>),
+    BCC?: ?(string | Array<string>),
+    priority?: ?number,
+    persistent?: ?boolean,
+    deliveryMode?: ?(1 | 2),
+    mandatory?: ?boolean,
+    contentType?: ?string,
+    contentEncoding?: ?string,
+    headers?: ?Headers,
+    correlationId?: ?string,
+    replyTo?: ?string,
+    messageId?: ?string,
+    timestamp?: ?number,
+    type?: ?string,
+    appId?: ?string
+  |};
 
-  declare export type ConsumeOpts = {
-    consumerTag?: string,
-    noLocal?: boolean,
-    noAck?: boolean,
-    exclusive?: boolean,
-    priority?: number,
-    arguments?: Args
-  };
+  declare export type ConsumeOpts = {|
+    consumerTag?: ?string,
+    noLocal?: ?boolean,
+    noAck?: ?boolean,
+    exclusive?: ?boolean,
+    priority?: ?number,
+    arguments?: ?Args
+  |};
 
-  declare export type GetOpts = {
-    noAck?: boolean
-  };
+  declare export type GetOpts = {|
+    noAck?: ?boolean
+  |};
 
   declare export type Callback<T> = (err: Error, res: T) => any;
 
