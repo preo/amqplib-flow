@@ -1,6 +1,9 @@
 # amqplib-flow
 ## amqp.node type declarations for Flow
 
+Based on:
+  vkurchatkin/amqplib-flow
+
 Only promise-based API is supported
 
 ## Installation
@@ -22,4 +25,4 @@ node_modules/amqplib-flow/types.js
 
 ## License
 
-MIT
+MIT, https://github.com/vkurchatkin/amqplib-flow
