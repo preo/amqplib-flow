@@ -1,0 +1,16 @@
+[version]
+0.69.0
+
+[ignore]
+.*/node_modules/.bin/.*
+.*/node_modules/flow-bin/.*
+
+[include]
+./types.js
+./types.js.flow
+./node_modules
+
+[options]
+esproposal.class_instance_fields=enable
+esproposal.class_static_fields=enable
+suppress_comment=\\(.\\|\n\\)*\\$Flow\\(Ignore\\|Issue\\)
