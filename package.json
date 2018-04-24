@@ -12,6 +12,7 @@
     "flow-bin": "0.69.0"
   },
   "peerDependencies": {
-    "flow-bin": ">=0.59.0"
+    "flow-bin": ">=0.59.0",
+    "amqplib": "^0.5.2"
   }
 }
