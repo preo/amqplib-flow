@@ -18,15 +18,15 @@ declare module 'amqplib' {
     maxPriority?: ?number
   |};
 
-  declare export type QueueOk = {
-    queue: string,
-    messageCount: number,
-    consumerCount: number
-  };
+  declare export type QueueOk = {|
+    +queue: string,
+    +messageCount: number,
+    +consumerCount: number
+  |};
 
-  declare export type DeleteOk = {
-    messageCount: number
-  };
+  declare export type DeleteOk = {|
+    +messageCount: number
+  |};
 
   declare export type DeleteQueueOpts = {|
     ifUnused?: ?boolean,
@@ -48,9 +48,9 @@ declare module 'amqplib' {
     arguments?: ?Args
   |};
 
-  declare export type ExchangeOk = {
-    exchange: string
-  };
+  declare export type ExchangeOk = {|
+    +exchange: string
+  |};
 
   declare export type ExchangeDeleteOpts = {|
     ifUnused?: ?boolean;
@@ -59,8 +59,8 @@ declare module 'amqplib' {
   declare export type PublishOpts = {|
     expiration?: ?number,
     userId?: ?string,
-    CC?: ?(string | Array<string>),
-    BCC?: ?(string | Array<string>),
+    CC?: ?(string | $ReadOnlyArray<string>),
+    BCC?: ?(string | $ReadOnlyArray<string>),
     priority?: ?number,
     persistent?: ?boolean,
     deliveryMode?: ?(1 | 2),
@@ -92,15 +92,15 @@ declare module 'amqplib' {
   declare export type Callback<T> = (err: Error, res: T) => any;
 
   declare export class Message {
-    content: Buffer;
-    fields: {
-      deliveryTag: string,
-      consumerTag: string,
-      exchange: string,
-      routingKey: string,
-      redelivered: boolean
+    +content: Buffer;
+    +fields: {
+      +deliveryTag: string,
+      +consumerTag: string,
+      +exchange: string,
+      +routingKey: string,
+      +redelivered: boolean
     };
-    properties: PublishOpts;
+    +properties: $ReadOnly<PublishOpts>;
   }
 
   declare export class Channel extends events$EventEmitter {
