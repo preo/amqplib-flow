@@ -1,98 +1,97 @@
 /* @flow */
 
-type SocketOptions = {}; // TODO
-type Args = { [key: string]: string };
-type Headers = { [key: string]: string };
+declare module 'amqplib' {
+  declare export type SocketOptions = {}; // TODO
+  declare export type Args = { [key: string]: string };
+  declare export type Headers = { [key: string]: string };
 
-type QueueOptions = {
-  exclusive?: boolean,
-  durable?: boolean,
-  autoDelete?: boolean,
-  arguments?: Args,
-  /* extenstions */
-  messageTtl?: number,
-  expires?: number,
-  deadLetterExchange?: string,
-  maxLength?: number,
-  maxPriority?: number
-};
+  declare export type QueueOptions = {
+    exclusive?: boolean,
+    durable?: boolean,
+    autoDelete?: boolean,
+    arguments?: Args,
+    /* extenstions */
+    messageTtl?: number,
+    expires?: number,
+    deadLetterExchange?: string,
+    maxLength?: number,
+    maxPriority?: number
+  };
 
-type QueueOk = {
-  queue: string,
-  messageCount: number,
-  consumerCount: number
-};
+  declare export type QueueOk = {
+    queue: string,
+    messageCount: number,
+    consumerCount: number
+  };
 
-type DeleteOk = {
-  messageCount: number
-};
+  declare export type DeleteOk = {
+    messageCount: number
+  };
 
-type DeleteQueueOpts = {
-  ifUnused?: boolean,
-  ifEmpty?: boolean
-};
+  declare export type DeleteQueueOpts = {
+    ifUnused?: boolean,
+    ifEmpty?: boolean
+  };
 
-type ExchangeType =
-  | 'fanout'
-  | 'direct'
-  | 'topic'
-  | 'headers'
-;
+  declare export type ExchangeType =
+    | 'fanout'
+    | 'direct'
+    | 'topic'
+    | 'headers'
+    ;
 
-type ExchangeOpts = {
-  durable?: boolean,
-  internal?: boolean,
-  autoDelete?: boolean,
-  alternateExchange?: string,
-  arguments?: Args
-};
+  declare export type ExchangeOpts = {
+    durable?: boolean,
+    internal?: boolean,
+    autoDelete?: boolean,
+    alternateExchange?: string,
+    arguments?: Args
+  };
 
-type ExchangeOk = {
-  exchange: string
-};
+  declare export type ExchangeOk = {
+    exchange: string
+  };
 
-type ExchangeDeleteOpts = {
-  ifUnused?: boolean;
-};
+  declare export type ExchangeDeleteOpts = {
+    ifUnused?: boolean;
+  };
 
-type PublishOpts = {
-  expiration?: number,
-  userId?: string,
-  CC?: string | Array<string>,
-  BCC?: string | Array<string>,
-  priority?: number,
-  persistent?: boolean,
-  deliveryMode?: 1 | 2,
-  mandatory?: boolean,
-  contentType?: string,
-  contentEncoding?: string,
-  headers?: Headers,
-  correlationId?: string,
-  replyTo?: string,
-  messageId?: string,
-  timestamp?: number,
-  type?: string,
-  appId?: string
-};
+  declare export type PublishOpts = {
+    expiration?: number,
+    userId?: string,
+    CC?: string | Array<string>,
+    BCC?: string | Array<string>,
+    priority?: number,
+    persistent?: boolean,
+    deliveryMode?: 1 | 2,
+    mandatory?: boolean,
+    contentType?: string,
+    contentEncoding?: string,
+    headers?: Headers,
+    correlationId?: string,
+    replyTo?: string,
+    messageId?: string,
+    timestamp?: number,
+    type?: string,
+    appId?: string
+  };
 
-type ConsumeOpts = {
-  consumerTag?: string,
-  noLocal?: boolean,
-  noAck?: boolean,
-  exclusive?: boolean,
-  priority?: number,
-  arguments?: Args
-};
+  declare export type ConsumeOpts = {
+    consumerTag?: string,
+    noLocal?: boolean,
+    noAck?: boolean,
+    exclusive?: boolean,
+    priority?: number,
+    arguments?: Args
+  };
 
-type GetOpts = {
-  noAck?: boolean
-};
+  declare export type GetOpts = {
+    noAck?: boolean
+  };
 
-type Callback<T> = (err: Error, res: T) => any;
+  declare export type Callback<T> = (err: Error, res: T) => any;
 
-declare module "amqplib" {
-
-  declare class Message {
+  declare export class Message {
     content: Buffer;
     fields: {
       deliveryTag: string,
@@ -104,7 +103,7 @@ declare module "amqplib" {
     properties: PublishOpts;
   }
 
-  declare class Channel extends events$EventEmitter {
+  declare export class Channel extends events$EventEmitter {
     close(): Promise<void>;
     assertQueue(queue: ?string, options?: QueueOptions): Promise<QueueOk>;
     checkQueue(queue: string): Promise<QueueOk>;
@@ -134,17 +133,17 @@ declare module "amqplib" {
     recover(): Promise<{}>
   }
 
-  declare class ConfirmChannel extends Channel {
+  declare export class ConfirmChannel extends Channel {
     publish(exchange: string, routingKey: string, content: Buffer, opts?: PublishOpts, cb?: Callback<{}>): boolean;
     sendToQueue(queue: string, content: Buffer, opts?: PublishOpts, cb?: Callback<{}>): boolean;
     waitForConfirms(): Promise<void>;
   }
 
-  declare class Connection extends events$EventEmitter {
+  declare export class Connection extends events$EventEmitter {
     close(): Promise<void>;
     createChannel(): Promise<Channel>;
     createConfirmChannel(): Promise<ConfirmChannel>;
   }
 
-  declare function connect(url?: string, socketOptions?: SocketOptions): Promise<Connection>;
+  declare export function connect(url?: string, socketOptions?: SocketOptions): Promise<Connection>;
 }
