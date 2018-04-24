@@ -1,18 +1,5 @@
 /* @flow */
 
-declare class events$EventEmitter {
-  static listenerCount(emitter: events$EventEmitter, event: string): number;
-
-  addListener(event: string, listener: Function): events$EventEmitter;
-  emit(event: string, ...args:Array<any>): boolean;
-  listeners(event: string): Array<Function>;
-  on(event: string, listener: Function): events$EventEmitter;
-  once(event: string, listener: Function): events$EventEmitter;
-  removeAllListeners(event?: string): events$EventEmitter;
-  removeListener(event: string, listener: Function): events$EventEmitter;
-  setMaxListeners(n: number): void;
-}
-
 type SocketOptions = {}; // TODO
 type Args = { [key: string]: string };
 type Headers = { [key: string]: string };
